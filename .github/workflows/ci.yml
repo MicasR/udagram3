@@ -28,7 +28,7 @@ jobs:
     # run: docker tag <<image_name>> <<dockerhub_name>>/<<image_name>>
     # Note: You can check the name of the images in the <<image_compose_build_file>>
     - run: docker tag udagram-api-feed dmicas/udagram-api-feed:v1
-    - run: docker tag udagram-api-user dmicas/udagram-api-user:v1
+    - run: docker tag dmicas/udagram-api-user:v1
     - run: docker tag udagram-frontend:local dmicas/udagram-frontend:v1
     - run: docker tag reverseproxy dmicas/reverseproxy:v1
 
