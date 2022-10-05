@@ -16,5 +16,27 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - run: echo "Hello world from udacity"
-    - run: ls -l -a
+  
+    # Compose images
+    # compose comand
+    # run: docker-compose -f <<image_compose_build_file>> build --parallel
+    - run: docker-compose -f docker-compose-build.yaml build --parallel
+
+
+    # Tag images
+    # Tag command:
+    # run: docker tag <<image_name>> <<dockerhub_name>>/<<image_name>>
+    # Note: You can check the name of the images in the <<image_compose_build_file>>
+    - run: docker tag udagram-api-feed dmicas/udagram-api-feed:v1
+    - run: docker tag udagram-qpi-user dmicas/udagram-qpi-user:v1
+    - run: docker tag udagram-frontend:local dmicas/udagram-frontend:v1
+    - run: docker tag reverseproxy dmicas/reverseproxy:v1
+
+
+    # Push images
+    # Push command
+    # run: docker push <<taged_image>>
+    - run: docker push dmicas/udagram-api-feed:v1
+    - run: docker push dmicas/udagram-qpi-user:v1
+    - run: docker push dmicas/udagram-frontend:v1
+    - run: docker push dmicas/reverseproxy:v1
